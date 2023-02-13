@@ -13,7 +13,7 @@ router.get('/', homeController.getHome);
 //Login
 router.get('/users/login', userController.getLogin);
 //Register
-
+router.get('/users/register', userController.getRegister);
 //Logout
 
 //OTHER
