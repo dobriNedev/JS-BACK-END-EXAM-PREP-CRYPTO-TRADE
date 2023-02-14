@@ -3,6 +3,8 @@ const initDB = require('./config/database');
 const viewEngineSetup = require('./config/viewEngine');
 const routes = require('./config/routes');
 const { PORT } = require('./config/constants');
+const cookiesParser = require('cookie-parser');
+const {authenticate } = require('./middleware/authMiddleware')
 //TO DO: import authMiddleware
 
 const app = express();
@@ -12,7 +14,9 @@ app.use(express.static('src/static'));
 app.use(express.urlencoded({
     extended: false
 }));
+app.use(cookiesParser());
 //TO DO: use authMiddleware
+app.use(authenticate);
 app.use(routes);
 
 initDB()
