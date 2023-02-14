@@ -18,6 +18,7 @@ router.get('/users/register', userController.getRegister);
 //Logout
 //CRYPTO
 router.get('/crypto/catalog', cryptoController.getAllCrypto);
+router.get('/crypto/createOffer', cryptoController.getCreateOffer);
 //OTHER
 
 module.exports = router;
