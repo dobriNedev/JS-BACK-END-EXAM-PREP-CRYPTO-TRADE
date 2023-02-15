@@ -21,9 +21,19 @@ router.post('/users/register', userController.postRegister);
 //Logout
 router.get('/users/logout', isAuthenticated,  userController.getLogout);
 //CRYPTO
+//Catalog
 router.get('/crypto/catalog', cryptoController.getAllCrypto);
+//Create
 router.get('/crypto/createOffer',isAuthenticated, cryptoController.getCreateOffer);
 router.post('/crypto/createOffer',isAuthenticated , cryptoController.postCreateOffer);
+//Details
+router.get('/crypto/:id/details', cryptoController.getDetails);
+//Edit
+//Delete
+//Buy
+router.get('/crypto/:id/buy', isAuthenticated, cryptoController.buyCrypto);
+
 //OTHER
+router.get('*', homeController.allOtherRoutes);
 
 module.exports = router;
