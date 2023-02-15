@@ -30,6 +30,7 @@ router.post('/crypto/createOffer',isAuthenticated , cryptoController.postCreateO
 router.get('/crypto/:id/details', cryptoController.getDetails);
 //Edit
 //Delete
+router.get('/crypto/:id/delete', isAuthenticated, cryptoController.deleteCrypto);
 //Buy
 router.get('/crypto/:id/buy', isAuthenticated, cryptoController.buyCrypto);
 

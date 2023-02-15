@@ -60,6 +60,16 @@ exports.buyCrypto = async(req, res) => {
         res.redirect(`/crypto/${cryptoId}/details`);
     } catch (error) {
         console.log(error);
-        res.status(400).render('details', { error: getErrorMessage(error) });
+        res.status(400).render('catalog', { error: getErrorMessage(error) });
+    }
+};
+
+exports.deleteCrypto = async(req, res) => {
+    const cryptoId = req.params.id;
+    try {
+        await cryptoService.deleteCrypto(cryptoId);
+        res.redirect('/crypto/catalog');
+    } catch (error) {
+        res.status(400).render('catalog', { error: getErrorMessage(error) });
     }
 };

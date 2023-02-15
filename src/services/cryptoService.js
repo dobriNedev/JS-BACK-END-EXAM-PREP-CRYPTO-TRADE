@@ -16,3 +16,5 @@ exports.buyCrypto = async(cryptoId, buyerId) => {
     await Crypto.findByIdAndUpdate(cryptoId, {$push: {buyers: buyerId}});
 };
 
+exports.deleteCrypto = (id) => Crypto.findByIdAndDelete(id);
+
