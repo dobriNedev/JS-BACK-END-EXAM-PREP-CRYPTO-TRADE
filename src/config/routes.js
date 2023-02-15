@@ -35,6 +35,8 @@ router.post('/crypto/:id/edit', isAuthenticated, cryptoController.postEdit);
 router.get('/crypto/:id/delete', isAuthenticated, cryptoController.deleteCrypto);
 //Buy
 router.get('/crypto/:id/buy', isAuthenticated, cryptoController.buyCrypto);
+//Search
+router.get('/crypto/search', cryptoController.getSearch);
 
 //OTHER
 router.get('*', homeController.allOtherRoutes);

@@ -22,3 +22,17 @@ exports.getOptions = (selected) => Crypto.schema.path('paymentMethod').enumValue
 
 exports.edit = (id, name, image, price, description, paymentMethod) => Crypto.findByIdAndUpdate(id, {name, image, price, description, paymentMethod});
 
+exports.search = async(name, paymentMethod) => {
+    let crypto = await this.getAllCrypto().lean();
+    
+    if (name) {
+        crypto = crypto.filter(el => el.name.toLowerCase() == name)
+    }
+
+    if(paymentMethod) {
+        crypto = crypto.filter(el => el.paymentMethod.toLowerCase() == paymentMethod)
+    }
+
+    return crypto;
+};
+

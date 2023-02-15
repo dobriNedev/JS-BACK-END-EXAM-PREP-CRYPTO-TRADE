@@ -100,3 +100,17 @@ exports.postEdit = async(req, res) => {
         res.status(400).render('catalog', { error: getErrorMessage(error) });
     }
 };
+
+exports.getSearch = async(req, res) => {
+    const { name, paymentMethod } = req.query;
+    
+    try {
+        const crypto = await cryptoService.search(name, paymentMethod);
+        
+        res.render('search', { crypto });
+    } catch (error) {
+        res.status(404).render('search', { error: getErrorMessage(error) });
+    }
+};
+
+
