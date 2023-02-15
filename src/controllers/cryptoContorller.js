@@ -86,3 +86,17 @@ exports.getEdit = async(req, res) => {
         res.status(400).render('catalog', { error: getErrorMessage(error) });
     }
 };
+
+exports.postEdit = async(req, res) => {
+    const cryptoId = req.params.id;
+    const { name, image, price, description, paymentMethod } = req.body;
+
+
+    try {
+        await cryptoService.edit( cryptoId, name, image, price, description, paymentMethod);
+
+        res.redirect(`/crypto/${cryptoId}/details`);
+    } catch (error) {
+        res.status(400).render('catalog', { error: getErrorMessage(error) });
+    }
+};
