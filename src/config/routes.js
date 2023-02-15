@@ -29,6 +29,7 @@ router.post('/crypto/createOffer',isAuthenticated , cryptoController.postCreateO
 //Details
 router.get('/crypto/:id/details', cryptoController.getDetails);
 //Edit
+router.get('/crypto/:id/edit', isAuthenticated, cryptoController.getEdit);
 //Delete
 router.get('/crypto/:id/delete', isAuthenticated, cryptoController.deleteCrypto);
 //Buy

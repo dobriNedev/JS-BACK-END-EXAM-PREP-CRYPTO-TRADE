@@ -73,3 +73,16 @@ exports.deleteCrypto = async(req, res) => {
         res.status(400).render('catalog', { error: getErrorMessage(error) });
     }
 };
+
+exports.getEdit = async(req, res) => {
+    const cryptoId = req.params.id;
+    try {
+        const crypto = await cryptoService.findOneById(cryptoId).lean();
+        const selectedPaymentMethod = crypto.paymentMethod;
+        const options = await cryptoService.getOptions(selectedPaymentMethod);
+        console.log(options)
+        res.render('edit', { crypto , selectedPaymentMethod, options });
+    } catch (error) {
+        res.status(400).render('catalog', { error: getErrorMessage(error) });
+    }
+};

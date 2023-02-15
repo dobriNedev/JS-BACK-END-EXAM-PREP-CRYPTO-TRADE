@@ -18,3 +18,5 @@ exports.buyCrypto = async(cryptoId, buyerId) => {
 
 exports.deleteCrypto = (id) => Crypto.findByIdAndDelete(id);
 
+exports.getOptions = (selected) => Crypto.schema.path('paymentMethod').enumValues.filter(v => v !== selected);
+
