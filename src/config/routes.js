@@ -23,6 +23,7 @@ router.get('/users/logout', isAuthenticated,  userController.getLogout);
 //CRYPTO
 router.get('/crypto/catalog', cryptoController.getAllCrypto);
 router.get('/crypto/createOffer',isAuthenticated, cryptoController.getCreateOffer);
+router.post('/crypto/createOffer',isAuthenticated , cryptoController.postCreateOffer);
 //OTHER
 
 module.exports = router;
